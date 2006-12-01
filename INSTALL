@@ -1,0 +1,20 @@
+Installation instructions for Voikkoconfig
+==========================================
+
+Linux:
+
+- Install the development headers and tools for
+  Qt 4.2 (or newer). On Debian this would mean packages
+  libqt4-dev and qt4-dev-tools.
+
+- Install Voikko version 1.2, especially the development headers
+  for libvoikko.
+
+- Go to directory src and run the following commands
+  $ qmake-qt4    (or qmake if you do not have qt3 tools installed)
+  $ make
+  $ lrelease voikkoconfig.pro  (this will build the Finnish UI translation)
+
+- Run the program:
+  $ ./voikkoconfig
+

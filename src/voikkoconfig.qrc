@@ -1,0 +1,11 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+<qresource>
+    <file alias="doc/fi/index.html">../doc/fi/index.html</file>
+    <file alias="doc/fi/menu.html">../doc/fi/menu.html</file>
+    <file alias="doc/fi/editor.html">../doc/fi/editor.html</file>
+    <file alias="doc/fi/settings.html">../doc/fi/settings.html</file>
+    <file alias="doc/fi/wordlists.html">../doc/fi/wordlists.html</file>
+    <file alias="doc/fi/introduction.html">../doc/fi/introduction.html</file>
+</qresource>
+</RCC>

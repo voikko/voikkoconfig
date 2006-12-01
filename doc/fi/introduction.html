@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fi" xml:lang="fi">
+
+<head>
+  <meta http-equiv="Content-Type" value="text/html;charset=utf-8" />
+  <title>Voikkoconfig - Johdanto</title>
+  <style type="text/css">
+    body { font-size: 11pt; }
+  </style>
+</head>
+<body>
+<p><a href="index.html">Takaisin sisällysluetteloon</a></p>
+<h1>Voikkoconfig - Johdanto</h1>
+
+<p>Voikkoconfig on työkalu Voikko-oikoluku- ja tavutusjärjestelmän asetusten muuttamiseen ja
+sanaton mukauttamiseen. Sitä voi myös käyttää yksinkertaisena tekstitiedostojen
+oikolukuohjelmana.</p>
+
+<h2>Erilaiset sanstot</h2>
+
+<p>Voikon sanasto koostuu tiedostosta <em>voikko-fi_FI.pro</em> sekä sen kanssa
+samassa hakemistossa olevista tiedostoista ja mahdollisesti alihakemistoista. Tavallisimmin
+Voikon mukana levitettävät sanastot eivät ole sellaisenaan muokattavissa. Voikkoconfig
+osaa avata tällaisen sanaston ja käyttää sitä oikoluvussa, mutta muutoksia sanastoon
+ei tällöin ole mahdollista tehdä.</p>
+
+<p>Sanasto on kuitenkin saatavissa myös mukautettavassa muodossa. Mukautettavat sanastot vievät
+enemmän levytilaa, mutta ne mahdollistavat sanaston päivittämisen ja laajentamisen. Myös joidenkin
+taivutusmuotojen käsittelyyn liittyviä sääntöjä on mahdollista muuttaa. Mukautettavan sanaston
+tunnistaa helpoiten siitä, että se sisältää tiedoston <em>voikko-fi_FI.mor</em>. Myös useimmat
+muut tällaisen sanaston mukana tulevat tiedostot ovat sen toiminnan kannalta välttämättömiä, joten
+niitä ei kannata poistaa.</p>
+
+<h2>Sanalistat</h2>
+
+<p>Sanalistoiksi kutsutaan mukautettavaan sanastoon lisättäviä tiedostoja, jotka sisältävät
+tietoja sanoista taivutusmuotoineen. Sanalistojen tiedostopääte on <em>lex</em>. Mukautettavan
+sanasto mukana tulee useita sanalistoja. Osa niistä sisältää poikkeavia sanoja ja muita suomen
+kielessä tarvittavia sanan osia, eikä niitä ole suunniteltu erikseen päivitettäviksi.
+Voikkoconfigin käyttäjän kannalta oleelliset sanalistat ovat <em>sanat/joukahainen.lex</em>, joka
+sisältää oikoluvun perussanaston, sekä hakemistossa <em>sanat/erikoisalat</em> olevat sanalistat,
+jotka sisältävät erikoisalojen sanoja sekä joitakin muita lisäsanalistoja, joita ei perusoikoluvussa
+tarvita.</p>
+<p>Sekä joukahainen.lex että useimmat lisäsanalistat voidaan ottaa käyttöön ja päivitettää Voikkoconfigin
+avulla.</p>
+
+<h2>Sanastojen käyttö eri sovelluksissa</h2>
+
+<p>Voikkoconfigin avulla on mahdollista käyttää levylle tallennettua tavallista tai muokattavaa sanastoa
+oikoluvussa riippumatta siitä, minne se on tallennettu. Kuitenkaan useimmissa Voikkoa käyttävissä
+sovelluksissa, kuten OpenOffice.orgissa, ei ole mahdollista valita käytettävän sanaston sijaintia.
+Tätä varten on mahdollista määritellä <em>käyttäjän oletussanasto</em> ja <em>järjestelmän
+oletussanasto</em>. Jos käyttäjän oletussanasto on määritelty ja olemassa, käytetään ensisijaisesti
+sitä. Muutoin Voikko valitsee järjestelmän oletussanaston. Voikkoconfigin avulla on mahdollista
+asettaa mikä tahansa sanasto käyttäjän oletussanastoksi, jolloin se toimii oikolukusanastona myös
+Voikkoconfigin ulkopuolella.</p>
+
+</body>
+</html>
