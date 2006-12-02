@@ -25,6 +25,7 @@
 #include <QTextCharFormat>
 #include <QMutex>
 
+/** Spellchecker offering spellchecking services using Voikko */
 class SpellChecker : public QObject {
 	Q_OBJECT
 	public:

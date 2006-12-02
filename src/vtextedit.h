@@ -26,6 +26,7 @@
 #include "spellchecker.h"
 #include "vsyntaxhighlighter.h"
 
+/** A spellchecking text editor component */
 class VTextEdit : public QTextEdit {
 	Q_OBJECT
 	public:
@@ -40,13 +41,32 @@ class VTextEdit : public QTextEdit {
 	void setHighlightType(HighlightType ht);
 	
 	protected:
+	/** Event handler for right mouse clicks on this text editor
+	 *  @param event the context menu event
+	 */
 	void contextMenuEvent(QContextMenuEvent * event);
+	
 	private:
+	/** The associated spell checker */
 	SpellChecker * spellChecker;
+	
+	/** The syntax highlighter for this text editor */
 	VSyntaxHighlighter * highlighter;
+	
+	/** Signal mapper used to add string parameter to the spelling suggestion
+	 *  context menu items events.
+	 */
 	QSignalMapper * selectSuggestionMapper;
+	
+	/** Contains the misspelled word when user has used right mouse click to
+	 *  bring up a context menu containing the spelling suggestions.
+	 */
 	QTextCursor misspelledSelection;
+	
 	private slots:
+	/** Replace the selected misspelled word with a suggested correction
+	 *  @param suggestion the corrected spelling
+	 */
 	void suggestionSelected(QString suggestion);
 };
 

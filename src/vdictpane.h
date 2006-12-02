@@ -24,12 +24,16 @@
 
 #include "dictmanager.h"
 
+/** Widget to manage word list associated to a dictionary */
 class VDictPane : public QWidget {
 	Q_OBJECT
 	public:
+		/** Constructs a new dictionary pane */
 		VDictPane();
 		
-		/** Set a new dictionary manager */
+		/** Set a new dictionary manager
+		 *  @param newDictManager the new dictionary manager
+		 */
 		void setDictManager(DictManager * newDictManager);
 	public slots:
 		/** Add new word list */
@@ -41,10 +45,19 @@ class VDictPane : public QWidget {
 		/** Invoke word list update dialog */
 		void updateWordLists();
 	private:
+		/** Current associated dictionary manager */
 		DictManager * dictManager;
+		
+		/** List of word lists in the dictionary */
 		QListView * dictListView;
+		
+		/** Button to add a new word list */
 		QPushButton * addButton;
+		
+		/** Button to remove selected word list */
 		QPushButton * removeButton; 
+		
+		/** Button to invoke the word list update dialog */
 		QPushButton * updateButton;
 };
 

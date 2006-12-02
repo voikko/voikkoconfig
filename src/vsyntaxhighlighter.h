@@ -26,6 +26,7 @@
 /** Available syntax highlighting types */
 enum HighlightType { HLTYPE_TEXT, HLTYPE_HTML, HLTYPE_LATEX };
 
+/** A spellchecking syntax higlighter for plain text and simple markup formats */
 class VSyntaxHighlighter : public QSyntaxHighlighter {
 	Q_OBJECT
 	public:

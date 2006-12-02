@@ -25,6 +25,7 @@
 #include "spellchecker.h"
 #include "vtextedit.h"
 
+/** Widget containing a simple spellchecking text editor and related controls */
 class VEditorPane : public QWidget {
 	Q_OBJECT
 	public:

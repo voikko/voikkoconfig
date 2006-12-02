@@ -29,6 +29,7 @@
 
 #include "lexfile.h"
 
+/** A dialog for retrieving word list updates from a network source */
 class UpdateDialog : public QDialog {
 	Q_OBJECT
 	public:
@@ -103,7 +104,7 @@ class UpdateDialog : public QDialog {
 	/** Lex files available from the update source */
 	QList<Lexfile *> lexfiles;
 	
-	/** Id of the http request corresponding to the update of available list informatio */
+	/** Id of the http request corresponding to the update of available list information */
 	int listRequestId;
 	
 	/** Base directory for local word list files */

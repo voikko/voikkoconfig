@@ -22,11 +22,16 @@
 #include <QDialog>
 #include <QTextBrowser>
 
+/** Browser for html help files */
 class VHelpBrowser : public QDialog {
 	Q_OBJECT
 	public:
+		/** Constructs a new help browser dialog
+		 *  @param parent the parent widget for this dialog
+		 */
 		VHelpBrowser(QWidget * parent);
 	private:
+		/** The text browser widget */
 		QTextBrowser * browser;
 };
 

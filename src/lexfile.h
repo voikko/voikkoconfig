@@ -24,6 +24,7 @@
 #include <QHttp>
 #include <QFile>
 
+/** A word list file */
 class Lexfile {
 	public:
 	/** Constructs a new lex file object
@@ -53,13 +54,23 @@ class Lexfile {
 	/** Base directory for local word list files */
 	QString basePath;
 	
+	/** Description of this word list */
 	QString description;
+	
+	/** Last modification date of this word list */
 	QString date;
+	
+	/** Remote URL of this word list */
 	QString remotePath;
+	
+	/** Local path to which the file will be saved */
 	QString localPath;
-	int updateRequestId;
 	
 	private:
+	/** ID of the http request of the file download */
+	int updateRequestId;
+	
+	/** File object used to save the local copy */
 	QFile * localFile;
 };
 

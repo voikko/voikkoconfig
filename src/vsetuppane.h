@@ -27,6 +27,7 @@
 #include "dictmanager.h"
 #include "spellchecker.h"
 
+/** Widget to manage dictionary and editor settings */
 class VSetupPane : public QWidget {
 	Q_OBJECT
 	public:

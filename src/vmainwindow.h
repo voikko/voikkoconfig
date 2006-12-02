@@ -29,6 +29,7 @@
 #include "spellchecker.h"
 #include "vhelpbrowser.h"
 
+/** The Voikkoconfig application mani window */
 class VMainWindow : public QMainWindow {
 	Q_OBJECT
 	public:

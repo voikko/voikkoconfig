@@ -42,6 +42,7 @@ class MallexBOption {
 	bool value;
 };
 
+/** Manager for loading, manipulating and saving dictionary information */
 class DictManager : public QStandardItemModel {
 	Q_OBJECT
 	public:
