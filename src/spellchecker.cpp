@@ -40,6 +40,7 @@ QString SpellChecker::initialise(QString path) {
 		voikko_set_bool_option(voikkoHandle, VOIKKO_OPT_IGNORE_DOT, 1);
 		voikkoMutex.unlock();
 		isInitialised = true;
+		emit settingsChanged();
 		return QString();
 	}
 }
@@ -59,6 +60,7 @@ void SpellChecker::setVoikkoBoolOption(int option, bool value) {
 	if (value) voikko_set_bool_option(voikkoHandle, option, 1);
 	else voikko_set_bool_option(voikkoHandle, option, 0);
 	voikkoMutex.unlock();
+	emit settingsChanged();
 }
 
 void SpellChecker::setIgnoreWordsWithNumbers(bool value) {

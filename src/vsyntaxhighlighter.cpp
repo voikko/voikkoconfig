@@ -24,6 +24,7 @@ VSyntaxHighlighter::VSyntaxHighlighter(SpellChecker * checker, QTextEdit * paren
 	misspelledFormat.setForeground(QColor("red"));
 	ignoreFormat.setForeground(QColor("gray"));
 	type = HLTYPE_TEXT;
+	connect(spellChecker, SIGNAL(settingsChanged()), this, SLOT(rehighlight()));
 }
 
 void VSyntaxHighlighter::highlightBlock(const QString & text) {

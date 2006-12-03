@@ -89,6 +89,10 @@ class SpellChecker : public QObject {
 	/** Destructor */
 	~SpellChecker();
 	
+	signals:
+	/** Spellchecker settings have chenged */
+	void settingsChanged();
+	
 	private:
 	/** Libvoikko spellchecker handle */
 	int voikkoHandle;

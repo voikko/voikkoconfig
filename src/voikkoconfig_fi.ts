@@ -3,54 +3,61 @@
 <context>
     <name>DictManager</name>
     <message>
-        <location filename="dictmanager.cpp" line="65"/>
+        <location filename="dictmanager.cpp" line="66"/>
         <source>Project file failed version check</source>
         <translation>Projektitiedoston versiotarkistus epäonnistui</translation>
     </message>
     <message>
-        <location filename="dictmanager.cpp" line="69"/>
+        <location filename="dictmanager.cpp" line="70"/>
         <source>Error reading malaga configuration from project file</source>
         <translation>Virhe luettaessa malagan asetuksia projektitiedostosta</translation>
     </message>
     <message>
-        <location filename="dictmanager.cpp" line="73"/>
+        <location filename="dictmanager.cpp" line="74"/>
         <source>Error reading user configuration from project file</source>
         <translation>Virhe luettaessa käyttäjän asetuksia projektitiedostosta</translation>
     </message>
     <message>
-        <location filename="dictmanager.cpp" line="77"/>
+        <location filename="dictmanager.cpp" line="78"/>
         <source>Error reading internal configuration from project file</source>
         <translation>Virhe luettaessa projektin sisäisiä asetuksia projektitiedostosta</translation>
     </message>
     <message>
-        <location filename="dictmanager.cpp" line="83"/>
+        <location filename="dictmanager.cpp" line="84"/>
         <source>Failed to open the specified file for reading</source>
         <translation>Annetun tiedoston avaaminen lukua varten epäonnistui</translation>
     </message>
     <message>
-        <location filename="dictmanager.cpp" line="129"/>
+        <location filename="dictmanager.cpp" line="130"/>
         <source>Failed to open the specified file for writing</source>
         <translation>Annetun tiedoston avaaminen kirjoittamista varten epäonnistui</translation>
     </message>
     <message>
-        <location filename="dictmanager.cpp" line="123"/>
+        <location filename="dictmanager.cpp" line="124"/>
         <source>Failed to write the main lex file</source>
         <translation>Kokoavan lex-tiedoston kirjoittaminen epäonnistui</translation>
     </message>
     <message>
-        <location filename="dictmanager.cpp" line="376"/>
+        <location filename="dictmanager.cpp" line="377"/>
         <source>Running malmake to regenerate the lexicon, please wait...</source>
         <translation>Suoritetaan malmake sanaston uudelleen generoimiseksi, odota hetki...</translation>
     </message>
     <message>
-        <location filename="dictmanager.cpp" line="44"/>
+        <location filename="dictmanager.cpp" line="45"/>
         <source>Accept old style inflections</source>
         <translation>Hyväksy vanhahtavat taivutusmuodot</translation>
     </message>
     <message>
-        <location filename="dictmanager.cpp" line="46"/>
+        <location filename="dictmanager.cpp" line="47"/>
         <source>Accept old inflections</source>
         <translation>Hyväksy vanhat taivutusmuodot</translation>
+    </message>
+    <message>
+        <location filename="dictmanager.cpp" line="395"/>
+        <source>Running malmake failed:
+</source>
+        <translation>Ohjelman malmake suoritus epäonnistui:
+</translation>
     </message>
 </context>
 <context>
@@ -383,15 +390,15 @@
     <message>
         <location filename="vmainwindow.cpp" line="103"/>
         <source>Voikkoconfig is a tool for configuring Voikko spellchecking system</source>
-        <translation>Voikkoconfig on työkalu Voikko-oikolukujärjestelmän mukauttamiseen</translation>
+        <translation type="obsolete">Voikkoconfig on työkalu Voikko-oikolukujärjestelmän mukauttamiseen</translation>
     </message>
     <message>
-        <location filename="vmainwindow.cpp" line="108"/>
+        <location filename="vmainwindow.cpp" line="111"/>
         <source>Choose a spelling dictionary</source>
         <translation>Valitse oikolukusanasto</translation>
     </message>
     <message>
-        <location filename="vmainwindow.cpp" line="145"/>
+        <location filename="vmainwindow.cpp" line="157"/>
         <source>Spelling dictionaries (*.pro)</source>
         <translation>Oikolukusanastot (*.pro)</translation>
     </message>
@@ -401,7 +408,7 @@
         <translation type="obsolete">Virhe</translation>
     </message>
     <message>
-        <location filename="vmainwindow.cpp" line="144"/>
+        <location filename="vmainwindow.cpp" line="156"/>
         <source>Save a spelling dictionary</source>
         <translation>Tallenna oikolukusanasto</translation>
     </message>
@@ -431,7 +438,7 @@
         <translation>&amp;Poista käyttäjän oletussanasto</translation>
     </message>
     <message>
-        <location filename="vmainwindow.cpp" line="269"/>
+        <location filename="vmainwindow.cpp" line="278"/>
         <source>Unsaved changes</source>
         <translation>Tallentamattomia muutoksia</translation>
     </message>
@@ -445,19 +452,19 @@ niitä ei ole tallennettu. Haluatko todella
 hävittää muutokset ja sulkea sovelluksen?</translation>
     </message>
     <message>
-        <location filename="vmainwindow.cpp" line="109"/>
+        <location filename="vmainwindow.cpp" line="112"/>
         <source>Spelling dictionary (voikko-fi_FI.pro)</source>
         <translation>Oikolukusanasto (voikko-fi_FI.pro)</translation>
     </message>
     <message>
-        <location filename="vmainwindow.cpp" line="123"/>
+        <location filename="vmainwindow.cpp" line="126"/>
         <source>Failed to initialise the spellchecker:
 </source>
         <translation>Oikolukuohjelman alustus epäonnistui:
 </translation>
     </message>
     <message>
-        <location filename="vmainwindow.cpp" line="124"/>
+        <location filename="vmainwindow.cpp" line="127"/>
         <source>
 Spellchecker will not work.</source>
         <translation>
@@ -466,10 +473,10 @@ Oikoluku ei toimi.</translation>
     <message>
         <location filename="vmainwindow.cpp" line="165"/>
         <source>Lexicon generation failed.</source>
-        <translation>Sanaston luonti epäonnistui.</translation>
+        <translation type="obsolete">Sanaston luonti epäonnistui.</translation>
     </message>
     <message>
-        <location filename="vmainwindow.cpp" line="176"/>
+        <location filename="vmainwindow.cpp" line="185"/>
         <source>Changes have been made to the configuration, but
 they have not been saved. Do you really want to
 discard the changes?</source>
@@ -478,32 +485,32 @@ niitä ei ole tallennettu. Haluatko todella
 hävittää muutokset?</translation>
     </message>
     <message>
-        <location filename="vmainwindow.cpp" line="210"/>
+        <location filename="vmainwindow.cpp" line="219"/>
         <source>Failed to create a registry key HKEY_CURRENT_USER\Software\Voikko</source>
         <translation>Rekisteriavaimen HKEY_CURRENT_USER\Software\Voikko luonti epäonnistui</translation>
     </message>
     <message>
-        <location filename="vmainwindow.cpp" line="193"/>
+        <location filename="vmainwindow.cpp" line="202"/>
         <source>Failed to set value HKEY_CURRENT_USER\Software\Voikko\DictionaryPath</source>
         <translation>Avaimen arvon HKEY_CURRENT_USER\Software\Voikko\DictionaryPath asettaminen epäonnistui</translation>
     </message>
     <message>
-        <location filename="vmainwindow.cpp" line="201"/>
+        <location filename="vmainwindow.cpp" line="210"/>
         <source>Failed to create the symbolic link %1</source>
         <translation>Symbolisen linkin %1 luonti epäonnistui</translation>
     </message>
     <message>
-        <location filename="vmainwindow.cpp" line="214"/>
+        <location filename="vmainwindow.cpp" line="223"/>
         <source>Failed to reset value HKEY_CURRENT_USER\Software\Voikko\DictionaryPath</source>
         <translation>Avaimen arvon HKEY_CURRENT_USER\Software\Voikko\DictionaryPath nollaus epäonnistui</translation>
     </message>
     <message>
-        <location filename="vmainwindow.cpp" line="229"/>
+        <location filename="vmainwindow.cpp" line="238"/>
         <source>Failed to remove symbolic link %1</source>
         <translation>Symbolisen linkin %1 poisto epäonnistui</translation>
     </message>
     <message>
-        <location filename="vmainwindow.cpp" line="272"/>
+        <location filename="vmainwindow.cpp" line="281"/>
         <source>Some changes to the configuration need to be saved
 before changes take effect in spell checking.
 Do you want to save the changes now?</source>
@@ -512,7 +519,7 @@ ennen kuin muutokset tulevat voimaan oikoluvussa.
 Haluatko tallentaa muutokset nyt?</translation>
     </message>
     <message>
-        <location filename="vmainwindow.cpp" line="238"/>
+        <location filename="vmainwindow.cpp" line="247"/>
         <source> is not a symbolic link. Please remove it manually.</source>
         <translation> ei ole symbolinen linkki. Poista se manuaalisesti.</translation>
     </message>
@@ -525,6 +532,17 @@ Haluatko tallentaa muutokset nyt?</translation>
         <location filename="vmainwindow.cpp" line="76"/>
         <source>&amp;About voikkoconfig</source>
         <translation>&amp;Tietoja ohjelmasta voikkoconfig</translation>
+    </message>
+    <message>
+        <location filename="vmainwindow.cpp" line="106"/>
+        <source>Voikkoconfig is a tool for configuring Voikko spellchecking system
+Copyright 2006 Harri Pitkanen (hatapitk@iki.fi)
+Voikkoconfig is distributed under the GNU General Public License,
+version 2 or later.</source>
+        <translation>Voikkoconfig on työkalu Voikko-oikolukujärjestelmän mukauttamiseen
+Tekijänoikeus 2006 Harri Pitkänen (hatapitk@iki.fi)
+Ohjelmaa voi levittää GNU General Public License -lisenssin
+(versio 2 tai uudempi) ehdoilla.</translation>
     </message>
 </context>
 <context>

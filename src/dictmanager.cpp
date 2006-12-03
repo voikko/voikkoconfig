@@ -23,6 +23,7 @@
 #include <QProcess>
 
 #include "dictmanager.h"
+#include "utils.h"
 
 MallexBOption::MallexBOption(QString optName, QString optDescription, bool optValue) {
 	name = optName;
@@ -375,14 +376,25 @@ bool DictManager::runMalmake(QWidget * parent) {
 	QMessageBox * mbox = new QMessageBox(parent);
 	mbox->setText(tr("Running malmake to regenerate the lexicon, please wait..."));
 	mbox->setStandardButtons(QMessageBox::NoButton);
-	QProcess * malmake = new QProcess(parent);
+	QProcess * malmake = new QProcess();
+	malmake->setWorkingDirectory(QFileInfo(projectFileName).dir().absolutePath());
 	QStringList params;
 	params << projectFileName;
 	connect(malmake, SIGNAL(finished(int, QProcess::ExitStatus)), mbox, SLOT(accept()));
 	malmake->start(QString("malmake"), params);
 	mbox->exec();
-	if (malmake->exitCode() == 0) return true;
-	else return false;
+	if (malmake->exitCode() == 0) {
+		delete malmake;
+		return true;
+	}
+	else {
+		QString errorOutput(malmake->readAllStandardError());
+		// Display no more than 500 last characters of the output
+		if (errorOutput.length() > 500) errorOutput = QString("...\n").append(errorOutput.right(500));
+		delete malmake;
+		errorMsg(tr("Running malmake failed:\n").append(errorOutput));
+		return false;
+	}
 }
 
 QString DictManager::getProjectDirectory() {

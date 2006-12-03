@@ -100,7 +100,10 @@ void VMainWindow::quit() {
 
 void VMainWindow::showAbout() {
 	QMessageBox::about(this, tr("About voikkoconfig"),
-		tr("Voikkoconfig is a tool for configuring Voikko spellchecking system"));
+		   tr("Voikkoconfig is a tool for configuring Voikko spellchecking system\n"
+		   "Copyright 2006 Harri Pitkanen (hatapitk@iki.fi)\n"
+		   "Voikkoconfig is distributed under the GNU General Public License,\n"
+		   "version 2 or later."));
 }
 
 void VMainWindow::showOpenDictionary() {
@@ -129,12 +132,21 @@ void VMainWindow::showOpenDictionary() {
 				editorPane->setHlType();
 			}
 			setWindowTitle(QString("Voikkoconfig - ") + currentDictPath);
-			setupPane->enableOnlyEditorSetup(false);
-			dictPane->setEnabled(true);
-			fileSaveDictionaryAction->setEnabled(true);
+			defaultsSetDefaultAction->setEnabled(true);
 			fileSaveDictionaryAsAction->setEnabled(true);
 			fileCloseDictionaryAction->setEnabled(true);
-			defaultsSetDefaultAction->setEnabled(true);
+			/* Only enable dictionary settings and saving if selected dictionary
+			   seems to have source files available. */ 
+			if (QDir(dictDir).exists("voikko-fi_FI.mor")) {
+				setupPane->enableOnlyEditorSetup(false);
+				dictPane->setEnabled(true);
+				fileSaveDictionaryAction->setEnabled(true);
+			}
+			else {
+				setupPane->enableOnlyEditorSetup(true);
+				dictPane->setEnabled(false);
+				fileSaveDictionaryAction->setEnabled(false);
+			}
 		}
 	}
 }
@@ -161,10 +173,7 @@ void VMainWindow::showSaveDictionary() {
 			editorPane->setEnabled(true);
 			editorPane->setHlType();
 		}
-		else {
-			errorMsg(tr("Lexicon generation failed."));
-			editorPane->setEnabled(false);
-		}
+		else editorPane->setEnabled(false);
 	}
 }
 
