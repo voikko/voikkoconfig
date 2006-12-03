@@ -167,6 +167,7 @@ void VMainWindow::showSaveDictionary() {
 	QString errMsg = dictManager->save(currentDictPath);
 	if (!errMsg.isEmpty()) errorMsg(errMsg);
 	else {
+		spellChecker->uninitialise();
 		if (dictManager->runMalmake(this)) { // Lexicon was succesfully regenerated
 			QString dictDir = QFileInfo(currentDictPath).dir().absolutePath();
 			spellChecker->initialise(dictDir);
