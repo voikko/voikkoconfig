@@ -66,7 +66,14 @@ int VSyntaxHighlighter::findNextNontextStart(const QString & text, int start) {
 		case HLTYPE_HTML:
 			return text.indexOf("<", start);
 		case HLTYPE_LATEX:
-			return text.indexOf("\\", start);
+			/* Usually \ marks the start of text to ignore. In a command that contains
+			 * ordinary text we also want to mark ending } with LaTeX command colour
+			 * for consistency. */
+			int cmdstart = text.indexOf("\\", start);
+			int cmdendchar = text.indexOf("}", start);
+			if (cmdstart != -1 && cmdendchar != -1)
+				return (cmdstart < cmdendchar) ? cmdstart : cmdendchar;
+			else return (cmdstart > cmdendchar) ? cmdstart : cmdendchar;
 	}
 	return -1; // impossible
 }
@@ -78,7 +85,11 @@ int VSyntaxHighlighter::findNextNontextEnd(const QString & text, int start) {
 		case HLTYPE_HTML:
 			return text.indexOf(">", start);
 		case HLTYPE_LATEX:
-			return text.indexOf("}", start);
+			if (text[start] == '}') return start;
+			if (text.indexOf("\\section", start) == start ||
+			    text.indexOf("\\subsection", start) == start)
+				return text.indexOf("{", start);
+			else return text.indexOf("}", start);
 	}
 	return -1; // impossible
 }
