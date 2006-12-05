@@ -57,3 +57,4 @@ win32:LIBS += c:/msys/1.0/inst/bin/libvoikko-1.dll
 
 TRANSLATIONS += voikkoconfig_fi.ts
 RESOURCES = voikkoconfig.qrc
+RC_FILE = voikkoconfig.rc

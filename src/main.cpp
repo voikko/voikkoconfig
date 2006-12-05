@@ -32,6 +32,8 @@ int main(int argc, char *argv[]) {
 	app.installTranslator(&translator);
 	
 	VMainWindow window;
+	QIcon icon(":/voikkoconfig.png");
+	window.setWindowIcon(icon);
 	window.show();
 	return app.exec();
 }

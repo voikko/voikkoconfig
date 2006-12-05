@@ -1,6 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
 <qresource>
+    <file>voikkoconfig.png</file>
     <file alias="doc/fi/index.html">../doc/fi/index.html</file>
     <file alias="doc/fi/menu.html">../doc/fi/menu.html</file>
     <file alias="doc/fi/editor.html">../doc/fi/editor.html</file>
