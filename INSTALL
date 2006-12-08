@@ -18,3 +18,19 @@ Linux:
 - Run the program:
   $ ./voikkoconfig
 
+Windows:
+
+- Install the development libraries, headers and tools for Qt 4.2 (or newer)
+  and Voikko as instructed on the Voikko development website.
+
+- Open the Windows command prompt by using the shortcut in Qt program group.
+  This ensures that environment variables for the development tools are
+  set correctly.
+
+- Go to directory src and run the following commands
+  qmake
+  make
+  lrelease voikkoconfig.pro  (this will build the Finnish UI translation)
+
+- Run the program: release/voikkoconfig.exe
+

@@ -18,8 +18,8 @@
 CONFIG += qt
 
 # Debug configuration does not work on Windows, use release configuration instead
-# CONFIG += release
-CONFIG += debug
+CONFIG += release
+# CONFIG += debug
 
 QT += network
 
