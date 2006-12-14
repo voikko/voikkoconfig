@@ -1,5 +1,35 @@
 This is Voikkoconfig, a tool for configuring, testing and
 updating the Voikko spellchecking system.
 
-Voikkoconfig is written by Harri Pitkänen <hatapitk@iki.fi>
+Voikkoconfig is written by Harri Pitkänen <hatapitk@iki.fi>.
+It is distributed under the GNU General Public License, version
+2 or later. The full text of the license is available in
+file COPYING.
+
+Instructions for compiling and installing this software can
+be found from INSTALL.
+
+
+For maintainers and packagers
+=============================
+
+The program sources, icons, translations and compilation
+control files are located in the subdirectory src/. User
+documentation is placed under doc/. The documentation will
+be compiled into the produced executable file, so installing
+it separately is not necessary.
+
+This program is not designed to use GNU autotools for configuration,
+compilation and installation. Currently the build system relies
+entirely on the qmake tool shipped as a part of the Qt development
+toolkit. If a more comprehensive build system is needed later,
+cmake is likely to be the best choice as it has better support for
+Windows.
+
+The header files under src/ contain Java style documentation comments
+explaining the role and usage of each class, method and class member
+variable. The coding style used in the C++ source follows mostly
+the conventions used by Java programmers. The comments are used in
+the cpp files to only explain the details of some algorithms. All other
+comments are in the header files.
 
