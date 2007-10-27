@@ -104,59 +104,42 @@ QStringList SpellChecker::suggestions(QString word) {
 bool SpellChecker::findNextWord(QString string, int * start, int * length) {
 	int slen = string.length();
 	int startind = *start;
+	wchar_t * buffer;
+	wchar_t * startp;
+	int blen;
+	size_t tokenlen;
+	enum voikko_token_type tokenType;
+	
 	if (startind < 0 || startind >= slen) return false;
+	if (!isInitialised) return false;
 	
-	// Find the start of the word
-	while (startind < slen) {
-		if (isLetter(string[startind])) break;
-		if (string[startind] == '-' && startind + 1 < slen &&
-		    isLetter(string[startind + 1])) break;
-		if (string[startind].isNumber() && startind + 1 < slen &&
-		    isLetter(string[startind])) break;
-		startind++;
+	buffer = (wchar_t *) malloc(4 * (slen - startind) + 1);
+	if (!buffer) return false;
+	
+	blen = string.mid(startind).toWCharArray(buffer);
+	startp = buffer;
+	*length = 0;
+	voikkoMutex.lock();
+	while (true) {
+		tokenType = voikko_next_token_ucs4(startp, blen, &tokenlen);
+		switch (tokenType) {
+			case TOKEN_NONE:
+				voikkoMutex.unlock();
+				free(buffer);
+				return false;
+			case TOKEN_WORD:
+				voikkoMutex.unlock();
+				(*length) += tokenlen;
+				free(buffer);
+				return true;
+			case TOKEN_PUNCTUATION:
+			case TOKEN_WHITESPACE:
+				blen -= tokenlen;
+				startp += tokenlen;
+				(*start) += tokenlen;
+				(*length) += tokenlen;
+		}
 	}
-	if (startind == slen) return false;
-	
-	// Find the end of the word
-	int endind = startind + 1;
-	while (endind < slen) {
-		if (isLetter(string[endind]) || string[endind].isNumber()) {
-			endind++;
-			continue;
-		}
-		if (string[endind] == '-' ||
-		    string[endind] == QChar(0x10, 0x20) /* HYPHEN */ ||
-		    string[endind] == QChar(0x11, 0x20) /* NON-BREAKING HYPHEN */) {
-			if (endind + 1 == slen || string[endind + 1].isSpace()) {
-				endind++;
-				break;
-			}
-			if (isLetter(string[endind + 1]) || string[endind + 1].isNumber()) {
-				endind++;
-				continue;
-			}
-			break;
-		}
-		if (string[endind] == '.') {
-			if (endind + 1 == slen || string[endind + 1].isSpace()) {
-				endind++;
-				break;
-			}
-			break;
-		}
-		if (string[endind] == ':' || string[endind] == '\'' ||
-		    string[endind] == QChar(0x19, 0x20) /* RIGHT SINGLE QUOTATION MARK */) {
-			if (endind + 1 < slen && isLetter(string[endind + 1])) {
-				endind++;
-				continue;
-			}
-		}
-		break;
-	}
-	
-	*start = startind;
-	*length = endind - startind;
-	return true;
 }
 
 bool SpellChecker::isLetter(QChar c) {
