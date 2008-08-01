@@ -17,12 +17,16 @@
 
 #include "vsyntaxhighlighter.h"
 
+#include <QBitArray>
+
 VSyntaxHighlighter::VSyntaxHighlighter(SpellChecker * checker, QTextEdit * parent) :
 	QSyntaxHighlighter(parent) {
 	spellChecker = checker;
-	misspelledFormat.setForeground(QColor("red"));
+	spellingErrorFormat.setForeground(QColor("red"));
 	grammarErrorFormat.setUnderlineStyle(QTextCharFormat::SpellCheckUnderline);
 	grammarErrorFormat.setUnderlineColor(QColor("green"));
+	spellingGrammarErrorFormat.merge(spellingErrorFormat);
+	spellingGrammarErrorFormat.merge(grammarErrorFormat);
 	ignoreFormat.setForeground(QColor("gray"));
 	type = HLTYPE_TEXT;
 	connect(spellChecker, SIGNAL(settingsChanged()), this, SLOT(rehighlight()));
@@ -96,22 +100,38 @@ int VSyntaxHighlighter::findNextNontextEnd(const QString & text, int start) {
 }
 
 void VSyntaxHighlighter::markErrors(const QString & text, int start, int end) {
+	int textLen = text.length();
+	QBitArray spellingErrors(textLen);
+	QBitArray grammarErrors(textLen);
 	int length;
 	int first = start;
-	// Mark spelling errors
+	
+	// Find spelling errors
 	while (spellChecker->findNextWord(text, &first, &length)) {
 		if (first > end) break;
 		if (first + length > end) length = end - first;
 		if (!spellChecker->checkWord(text.mid(first, length))) {
-			setFormat(first, length, misspelledFormat);
+			spellingErrors.fill(true, first, first + length);
 		}
 		first += length;
 	}
-	// Mark grammar errors
+	
+	// Find grammar errors
 	int skip = 0;
 	while (spellChecker->findNextGrammarError(text, skip++, &first, &length)) {
 		if (first > end) break;
 		if (first + length > end) length = end - first;
-		setFormat(first, length, grammarErrorFormat);
+		grammarErrors.fill(true, first, first + length);
+	}
+	
+	// Mark all errors
+	for (int i = 0; i < textLen; i++) {
+		if (spellingErrors[i]) {
+			if (grammarErrors[i]) setFormat(i, 1, spellingGrammarErrorFormat);
+			else setFormat(i, 1, spellingErrorFormat);
+		}
+		else {
+			if (grammarErrors[i]) setFormat(i, 1, grammarErrorFormat);
+		}
 	}
 }

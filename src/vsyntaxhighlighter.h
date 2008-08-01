@@ -57,10 +57,13 @@ class VSyntaxHighlighter : public QSyntaxHighlighter {
 	QTextCharFormat defaultFormat;
 	
 	/** text format for misspelled text */
-	QTextCharFormat misspelledFormat;
+	QTextCharFormat spellingErrorFormat;
 	
 	/** text format for grammar errors */
 	QTextCharFormat grammarErrorFormat;
+	
+	/** text format for both error types*/
+	QTextCharFormat spellingGrammarErrorFormat;
 	
 	/** text format for text ignored due to syntax highlighting */
 	QTextCharFormat ignoreFormat;

@@ -140,7 +140,6 @@ bool SpellChecker::findNextWord(QString string, int * start, int * length) {
 				blen -= tokenlen;
 				startp += tokenlen;
 				(*start) += tokenlen;
-				(*length) += tokenlen;
 		}
 	}
 }
