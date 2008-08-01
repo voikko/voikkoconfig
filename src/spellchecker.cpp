@@ -18,6 +18,7 @@
 #include <libvoikko/voikko.h>
 
 #include "spellchecker.h"
+#include <iostream>
 
 SpellChecker::SpellChecker() {
 	isInitialised = false;
@@ -79,6 +80,7 @@ bool SpellChecker::checkWord(QString word) {
 	if (!isInitialised) return false;
 	voikkoMutex.lock();
 	spellresult = voikko_spell_cstr(voikkoHandle, word.toUtf8().data());
+	std::cout << "#" << qPrintable(word) << "#" << std::endl;
 	voikkoMutex.unlock();
 	if (spellresult == VOIKKO_SPELL_OK) return true;
 	else return false;
@@ -141,6 +143,25 @@ bool SpellChecker::findNextWord(QString string, int * start, int * length) {
 				(*length) += tokenlen;
 		}
 	}
+}
+
+bool SpellChecker::findNextGrammarError(QString string, int skip, int * start, int * length) {
+	if (!isInitialised) return false;
+	if (string.isEmpty()) return false;
+	
+	QByteArray buffer = string.toUtf8();
+	
+	voikkoMutex.lock();
+	voikko_grammar_error grammarError = voikko_next_grammar_error_cstr(
+		voikkoHandle, buffer.data(), buffer.size(), 0, skip);
+	std::cout << "|" << qPrintable(string) << "|" << std::endl;
+	voikko_free_suggest_cstr(grammarError.suggestions);
+	voikkoMutex.unlock();
+	
+	if (grammarError.error_code == 0) return false;
+	*start = grammarError.startpos;
+	*length = grammarError.errorlen;
+	return true;
 }
 
 bool SpellChecker::isLetter(QChar c) {

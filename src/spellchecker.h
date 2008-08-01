@@ -1,5 +1,5 @@
 /* Voikkoconfig: Configuration tool for Finnish spellchecker Voikko
- * Copyright (C) 2006 Harri Pitkänen <hatapitk@iki.fi>
+ * Copyright (C) 2006 - 2008 Harri Pitkänen <hatapitk@iki.fi>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,10 +57,19 @@ class SpellChecker : public QObject {
 	 *  @param string String from which the word will be searched
 	 *  @param start Index to start the search from. If a word is found, this
 	 *         will be set to its start index.
-	 *  @param length If a word is found, lenght will be set to contain its length.
+	 *  @param length If a word is found, length will be set to contain its length.
 	 *  @return True, if a word is found, otherwise false.
 	 */
 	bool findNextWord(QString string, int * start, int * length);
+	
+	/** Find the next grammar error from a paragraph or sentence.
+	 *  @param string String from which the error will be searched for.
+	 *  @param skip Number of grammar errors to skip
+	 *  @param start (out) Start index of located grammar error
+	 *  @param length (out) Length of the grammar error
+	 *  @return True, if an error is found, otherwise false.
+	 */
+	bool findNextGrammarError(QString string, int skip, int * start, int * length);
 	
 	/** Defines whether words containing numbers should be ignored during
 	 *  the spellchecking.

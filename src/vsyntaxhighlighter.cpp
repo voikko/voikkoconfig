@@ -1,5 +1,5 @@
 /* Voikkoconfig: Configuration tool for Finnish spellchecker Voikko
- * Copyright (C) 2006 Harri Pitkänen <hatapitk@iki.fi>
+ * Copyright (C) 2006 - 2008 Harri Pitkänen <hatapitk@iki.fi>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,8 @@ VSyntaxHighlighter::VSyntaxHighlighter(SpellChecker * checker, QTextEdit * paren
 	QSyntaxHighlighter(parent) {
 	spellChecker = checker;
 	misspelledFormat.setForeground(QColor("red"));
+	grammarErrorFormat.setUnderlineStyle(QTextCharFormat::SpellCheckUnderline);
+	grammarErrorFormat.setUnderlineColor(QColor("green"));
 	ignoreFormat.setForeground(QColor("gray"));
 	type = HLTYPE_TEXT;
 	connect(spellChecker, SIGNAL(settingsChanged()), this, SLOT(rehighlight()));
@@ -95,12 +97,21 @@ int VSyntaxHighlighter::findNextNontextEnd(const QString & text, int start) {
 
 void VSyntaxHighlighter::markErrors(const QString & text, int start, int end) {
 	int length;
-	while (spellChecker->findNextWord(text, &start, &length)) {
-		if (start > end) return;
-		if (start + length > end) length = end - start;
-		if (!spellChecker->checkWord(text.mid(start, length))) {
-			setFormat(start, length, misspelledFormat);
+	int first = start;
+	// Mark spelling errors
+	while (spellChecker->findNextWord(text, &first, &length)) {
+		if (first > end) break;
+		if (first + length > end) length = end - first;
+		if (!spellChecker->checkWord(text.mid(first, length))) {
+			setFormat(first, length, misspelledFormat);
 		}
-		start += length;
+		first += length;
+	}
+	// Mark grammar errors
+	int skip = 0;
+	while (spellChecker->findNextGrammarError(text, skip++, &first, &length)) {
+		if (first > end) break;
+		if (first + length > end) length = end - first;
+		setFormat(first, length, grammarErrorFormat);
 	}
 }

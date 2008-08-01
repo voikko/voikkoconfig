@@ -59,6 +59,9 @@ class VSyntaxHighlighter : public QSyntaxHighlighter {
 	/** text format for misspelled text */
 	QTextCharFormat misspelledFormat;
 	
+	/** text format for grammar errors */
+	QTextCharFormat grammarErrorFormat;
+	
 	/** text format for text ignored due to syntax highlighting */
 	QTextCharFormat ignoreFormat;
 	
